@@ -1,0 +1,340 @@
+﻿
+@{
+    ViewData["Title"] = "Entertainment";
+
+}
+
+				
+<!-- breadcrumbs -->
+<div class="breadcrumb_about">
+    <div class="container">
+        <ul>
+            <li><a href="/"><span class="fa fa-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
+            <li>Entertainment</li>
+        </ul>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!--e-grid1  Movies -->
+<div class="e-grid1">
+    <div class="e-grid1-padding-w3ls">
+        <h2> Movies in Multiplex</h2>
+        <div class="movie-slide">
+
+            <div class="col-md-4 e-grid1 movie-1">
+                <div class="slider">
+                    <div class="wrap">
+                        <ul class="rslides" id="slider1">
+                            <li>  <img src="~/assets/images/ent1.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent2.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent3.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent4.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent5.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent6.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent7.jpg" class="img-responsive e-img" alt="">  </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+            <div class="col-md-4 e-grid1 movie-1">
+
+                <div class="movie-1-text-a">
+                    <div class="movie-1-text">
+                        <h4>Now Showing</h4>
+                        <p>Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.</p>
+                    </div>
+                </div>
+
+                <div class="movie-1-text-b">
+                    <div class="movie-1-text">
+                        <h4>Coming Soon</h4>
+                        <p>Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.</p>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+            <div class="col-md-4 e-grid1 movie-1">
+                <div class="slider">
+                    <div class="wrap">
+                        <ul class="rslides" id="slider2">
+                            <li>  <img src="~/assets/images/ent7.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent6.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent5.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent1.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent2.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent3.jpg" class="img-responsive e-img" alt="">  </li>
+                            <li>  <img src="~/assets/images/ent4.jpg" class="img-responsive e-img" alt="">  </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--//e-grid1-->
+<!-- e-grid-middle   Movie ticket Booking -->
+<div class="mov_ticket">
+    <div class="container">
+        <div class="mov-padding-agileits">
+
+            <div class="content-w3layouts">
+                <h2>Multiplex Theatre Book here</h2>
+                <div class="demo">
+                    <div id="seat-map">
+                        <div class="front">SCREEN</div>
+                    </div>
+                    <div class="booking-details">
+                        <ul class="book-left">
+                            <li>Movie </li>
+                            <li>Time </li>
+                            <li>Tickets</li>
+                            <li>Total</li>
+                            <li>Seats :</li>
+                        </ul>
+                        <ul class="book-right">
+                            <li>: Gingerclown</li>
+                            <li>: April 3, 21:00</li>
+                            <li>: <span id="counter1">0</span></li>
+                            <li>: <b><i>$</i><span id="total">0</span></b></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
+
+
+                        <button class="checkout-button">Book Now</button>
+                        <div id="legend"></div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+                <script type="text/javascript">
+                    var price = 10; //price
+                    $(document).ready(function () {
+                        var $cart = $('#selected-seats'), //Sitting Area
+                            $counter1 = $('#counter1'), //Votes
+                            $total = $('#total'); //Total money
+
+                        var sc = $('#seat-map').seatCharts({
+                            map: [  //Seating chart
+                                'aaaaaaaaaa',
+                                'aaaaaaaaaa',
+                                '__________',
+                                'aaaaaaaa__',
+                                'aaaaaaaaaa',
+                                'aaaaaaaaaa',
+                                'aaaaaaaaaa',
+                                'aaaaaaaaaa',
+                                'aaaaaaaaaa',
+                                '__aaaaaa__'
+                            ],
+                            naming: {
+                                top: false,
+                                getLabel: function (character, row, column) {
+                                    return column;
+                                }
+                            },
+                            legend: { //Definition legend
+                                node: $('#legend'),
+                                items: [
+                                    ['a', 'available', 'Available'],
+                                    ['a', 'unavailable', 'Sold'],
+                                    ['a', 'selected', 'Selected']
+                                ]
+                            },
+                            click: function () { //Click event
+                                if (this.status() == 'available') { //optional seat
+                                    $('<li>Row' + (this.settings.row + 1) + ' Seat' + this.settings.label + '</li>')
+                                        .attr('id', 'cart-item-' + this.settings.id)
+                                        .data('seatId', this.settings.id)
+                                        .appendTo($cart);
+
+                                    $counter1.text(sc.find('selected').length + 1);
+                                    $total.text(recalculateTotal(sc) + price);
+
+                                    return 'selected';
+                                } else if (this.status() == 'selected') { //Checked
+                                    //Update Number
+                                    $counter1.text(sc.find('selected').length - 1);
+                                    //update totalnum
+                                    $total.text(recalculateTotal(sc) - price);
+
+                                    //Delete reservation
+                                    $('#cart-item-' + this.settings.id).remove();
+                                    //optional
+                                    return 'available';
+                                } else if (this.status() == 'unavailable') { //sold
+                                    return 'unavailable';
+                                } else {
+                                    return this.style();
+                                }
+                            }
+                        });
+                        //sold seat
+                        sc.get(['1_2', '4_4', '4_5', '6_6', '6_7', '8_5', '8_6', '8_7', '8_8', '10_1', '10_2']).status('unavailable');
+
+                    });
+                    //sum total money
+                    function recalculateTotal(sc) {
+                        var total = 0;
+                        sc.find('selected').each(function () {
+                            total += price;
+                        });
+
+                        return total;
+                    }
+                </script>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    <!--// e-grid-middle   Movie ticket Booking -->
+    <!--e-grid2-->
+    <div class="e-grid2">
+        <div class="container">
+            <div class="e-grid2-padding-w3agile">
+
+                <section class="slider">
+                    <div class="flexslider">
+                        <ul class="slides">
+
+                            <li>
+                                <div class="e-grid2-info">
+                                    <div class="e-grid2-text">
+                                        <h4>Some heading - 1</h4>
+                                        <p>
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="e-grid2-info">
+                                    <div class="e-grid2-text">
+                                        <h4>Some heading - 2</h4>
+                                        <p>
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="e-grid2-info">
+                                    <div class="e-grid2-text">
+                                        <h4>Some heading - 3</h4>
+                                        <p>
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="e-grid2-info">
+                                    <div class="e-grid2-text">
+                                        <h4>Some heading - 4</h4>
+                                        <p>
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry
+                                            Ipsum is simply dummy text of the printing and typesetting simply dummy text of the printing industry.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </section>
+                <!-- FlexSlider --> 
+                <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+                <script defer src="js/jquery.flexslider.js"></script>
+                <script type="text/javascript">
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            start: function (slider) {
+                                $('body').removeClass('loading');
+                            }
+                        });
+                    });
+                </script>
+                <!-- //FlexSlider -->
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//e-grid2-->
+    <!--e-grid3-->
+    <div class="e-grid3">
+        <div class="container">
+            <div class="e-grid3-padding-agileinfo">
+                <h3> Games in Mall</h3>
+                <div class="col-md-3 e-grid3-1">
+                    <div class="e-grid3-info">
+                        <img src="~/assets/images/e2.jpg" class="img-responsive" alt="">
+                        <div class="e-grid3-text">
+                            <h4>Name of the Game</h4>
+                            <p> some dummy text related to the game and the grid for the page</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 e-grid3-1">
+                    <div class="e-grid3-info">
+                        <img src="~/assets/images/e1.jpg" class="img-responsive" alt="">
+                        <div class="e-grid3-text">
+                            <h4>Name of the Game</h4>
+                            <p> some dummy text related to the game and the grid for the page</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 e-grid3-1">
+                    <div class="e-grid3-info">
+                        <img src="~/assets/images/e3.jpg" class="img-responsive" alt="">
+                        <div class="e-grid3-text">
+                            <h4>Name of the Game</h4>
+                            <p> some dummy text related to the game and the grid for the page</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 e-grid3-1">
+                    <div class="e-grid3-info">
+                        <img src="~/assets/images/e2.jpg" class="img-responsive" alt="">
+                        <div class="e-grid3-text">
+                            <h4>Name of the Game</h4>
+                            <p> some dummy text related to the game and the grid for the page</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//e-grid3-->
+    <script>
+ <!--    Js for Responsive slider-- >
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 1
+                $("#slider1, #slider3").responsiveSlides({
+                    auto: true,
+                    nav: true,
+                    speed: 1000,
+                    namespace: "callbacks",
+                });
+                // Slideshow 2
+                $("#slider2").responsiveSlides({
+                    auto: true,
+                    nav: true,
+                    speed: 3000,
+                    namespace: "callbacks",
+                });
+            });
+    </script>

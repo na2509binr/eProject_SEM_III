@@ -1,0 +1,82 @@
+﻿@model ABCD_Mall_Online.Areas.Admin.Models.AdminViewModel
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Film Manager</h2>
+
+<form action="" method="get" class="form-inline">
+    <div class="form-group">
+        <label class="sr-only" for="">Label</label>
+        <input class="form-control" name="name" placeholder="Search ...." />
+    </div>
+    <button type="submit" class="btn btn-default mr-1"><i class="fa fa-search"></i></button>
+    <a asp-action="Create" class="btn btn-primary fa fa-plus">Create New</a>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.film.FilmId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film.GenreId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.filmList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilmId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    <img src="~/images/film/@item.Image" width="60">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenreId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FilmId" class="btn btn-success"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.FilmId" class="btn btn-info"><i class="fa fa-eye"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.FilmId" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model.filmList ,page => Url.Action("Index" , new { page = page}),
+    new PagedListRenderOptions
+    {
+        ContainerDivClasses = new string[] {"p-3"},
+        LiElementClasses = new string[] {"page-item"},
+        PageClasses = new string [] {"page-link"}
+    }
+)
+

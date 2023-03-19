@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1972
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABCD_Mall_Data", "ABCD_Mall_Data\ABCD_Mall_Data.csproj", "{A749F8DD-C54D-47EC-A7DE-22CF3DA90AE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABCD_Mall_Online", "ABCD_Mall_Online\ABCD_Mall_Online.csproj", "{8422B0BE-BE2F-4EB3-AFAF-4ED3CA089670}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A749F8DD-C54D-47EC-A7DE-22CF3DA90AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A749F8DD-C54D-47EC-A7DE-22CF3DA90AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A749F8DD-C54D-47EC-A7DE-22CF3DA90AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A749F8DD-C54D-47EC-A7DE-22CF3DA90AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8422B0BE-BE2F-4EB3-AFAF-4ED3CA089670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8422B0BE-BE2F-4EB3-AFAF-4ED3CA089670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8422B0BE-BE2F-4EB3-AFAF-4ED3CA089670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8422B0BE-BE2F-4EB3-AFAF-4ED3CA089670}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BAE79F8-2686-4837-A6EF-F7213AA0AE54}
+	EndGlobalSection
+EndGlobal
